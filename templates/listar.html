@@ -1,0 +1,38 @@
+
+
+{% extends 'index.html' %}
+
+{% block titulo %} Formulario {% endblock %}
+
+{% block cabeca %} 
+
+<div class="header">
+
+  <div class="header-right">
+    <a class="active" >
+      {% if session['logged_in'] %}
+        olá, {{ session['login'] }}
+        <a href="/logout">logout</a>
+      {% endif %}
+      
+    </a>
+  </div>
+  <a href="/adicionar">Adicionar</a>
+</div> 
+
+{% endblock %} 
+
+{% block corpo %} 
+    <table style="width:100%">
+      <tr>
+        <th>Danças</th>
+        <th></th>
+      </tr>
+  {% for i in d %}
+      <tr align="center">
+        <td>{{ i }}</td>
+        <td><a href="/adicionar/{{ i }}">Adicionar</a><td>
+      </tr>
+  {% endfor %}  
+    </table> 
+{% endblock %}
